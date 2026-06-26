@@ -520,7 +520,7 @@ textarea.fc{resize:vertical;min-height:78px;line-height:1.5}
     </div>
     <div class="fg">
       <label class="flbl">Elementos específicos <span style="font-weight:400;color:var(--texto3)">(selecciona los que aplican)</span></label>
-      <div class="chips-wrap" id="chips-wrap"></div>
+      <div class="chips-wrap-rd" id="chips-wrap"></div>
       <input class="fc" id="chip-custom" placeholder="Agregar elemento adicional…">
     </div>
   </div></div>
@@ -1564,6 +1564,60 @@ const DB = {
   ],
   "848": [
     {
+      id:"Art. 9", t:"Período de conversión — requisitos y duración",
+      d:"Antes de que una unidad de producción pueda certificarse como ecológica debe cumplir un período de conversión: 2 años antes de la siembra para cultivos anuales y 3 años antes de la primera cosecha para cultivos perennes. Durante la conversión se aplican todas las normas ecológicas pero el producto no puede venderse como ecológico.",
+      chips:{
+        grupo:["fecha de inicio de conversión documentada","duración del período de conversión","registros de prácticas durante la conversión","productos vendidos sin indicación ecológica durante conversión","mapas con fechas de inicio por parcela"],
+        finca:["fecha de inicio de conversión por parcela","registros de manejo durante conversión","documentación de no uso de insumos prohibidos"],
+        beneficio:["documentación del período de conversión de materias primas"],
+        planta:["trazabilidad de insumos en conversión vs ecológicos"],
+        exportadora:["documentación del estado de conversión de proveedores"]
+      },
+      hallazgo:{
+        ausente:"Durante la inspección al {tipo} se verificó que {sujeto} no cuenta{n} con {elementos} que acrediten el cumplimiento del período de conversión requerido bajo el Art. 9 del Reglamento 848/2018 para el ciclo {ciclo}.",
+        incompleto:"Durante la inspección al {tipo} se verificó que {sujeto} presenta{n} documentación incompleta sobre el período de conversión, con deficiencias en {elementos} para el ciclo {ciclo}.",
+        Incorrecto:"Durante la inspección al {tipo} se constató que {sujeto} comercializa{n} producto como ecológico sin haber completado el período de conversión establecido, específicamente en {elementos} para el ciclo {ciclo}."
+      },
+      criterio:"El Artículo 9 del Reglamento (UE) 848/2018 establece que las unidades de producción deben cumplir un período de conversión de al menos 2 años antes de la siembra (cultivos anuales) o 3 años antes de la primera cosecha ecológica (cultivos perennes), durante el cual se aplican todas las normas de producción ecológica pero los productos no pueden comercializarse con indicaciones ecológicas.",
+      declaracion:"Lo anterior constituye una no conformidad con el Artículo 9 del Reglamento (UE) 848/2018, por no acreditar correctamente el período de conversión requerido para la certificación ecológica."
+    },
+    {
+      id:"Art. 10", t:"Período de conversión — retroactividad y reducción",
+      d:"El período de conversión puede reducirse retroactivamente si el operador demuestra que las parcelas no han recibido insumos prohibidos durante un período equivalente. Se requiere evidencia documental verificable (fotografías, declaraciones notariales, inspecciones previas).",
+      chips:{
+        grupo:["evidencia de no aplicación de insumos prohibidos","declaraciones notariales o testimoniales","fotografías georreferenciadas con fecha","informes de inspección anteriores","historial de uso del suelo documentado"],
+        finca:["historial de uso de la parcela","declaraciones de no uso de agroquímicos","documentos que acrediten inicio de conversión retroactiva"],
+        beneficio:["documentación de origen de materia prima durante retroactividad"],
+        planta:[],
+        exportadora:[]
+      },
+      hallazgo:{
+        ausente:"Durante la inspección al {tipo} se verificó que {sujeto} no cuenta{n} con {elementos} que respalden la reducción retroactiva del período de conversión solicitada para el ciclo {ciclo}.",
+        incompleto:"Durante la inspección al {tipo} se verificó que la evidencia presentada por {sujeto} para reducir retroactivamente el período de conversión es insuficiente en {elementos} para el ciclo {ciclo}.",
+        Incorrecto:"Durante la inspección al {tipo} se constató que la documentación de retroactividad presentada por {sujeto} no cumple los requisitos de verificabilidad requeridos en {elementos} para el ciclo {ciclo}."
+      },
+      criterio:"El Artículo 10 del Reglamento (UE) 848/2018 permite la reducción retroactiva del período de conversión cuando el operador presenta evidencia documental verificable que demuestre que las parcelas no recibieron productos no autorizados durante el período correspondiente, sujeto a aprobación del organismo de control.",
+      declaracion:"Lo anterior constituye una no conformidad con el Artículo 10 del Reglamento (UE) 848/2018, por no contar con la documentación verificable requerida para la reducción retroactiva del período de conversión."
+    },
+    {
+      id:"Art. 11", t:"Prohibición de producción paralela ecológica y no ecológica",
+      d:"Un operador que produce tanto de forma ecológica como no ecológica debe asegurar una separación clara y verificable entre ambas producciones. Las especies producidas ecológicamente no pueden cultivarse simultáneamente con las mismas variedades en modo convencional en la misma unidad.",
+      chips:{
+        grupo:["separación documental entre parcelas ecológicas y convencionales","registros de cosecha separados por modalidad","identificación clara de lotes ecológicos y convencionales","mapas con delimitación de áreas","ausencia de variedades no distinguibles entre producciones"],
+        finca:["rotulación diferenciada de parcelas","registros de producción separados","evidencia de separación física"],
+        beneficio:["separación de flujos ecológico y convencional","registros de procesamiento separados"],
+        planta:["líneas de proceso diferenciadas","control de lotes ecológico/convencional"],
+        exportadora:["separación documental de volúmenes","trazabilidad por modalidad de producción"]
+      },
+      hallazgo:{
+        ausente:"Durante la inspección al {tipo} se verificó que {sujeto} no cuenta{n} con {elementos} que garanticen la separación entre la producción ecológica y la no ecológica para el ciclo {ciclo}.",
+        incompleto:"Durante la inspección al {tipo} se verificó que {sujeto} presenta{n} deficiencias en {elementos} para mantener la separación verificable entre producción ecológica y convencional en el ciclo {ciclo}.",
+        Incorrecto:"Durante la inspección al {tipo} se constató que {sujeto} incumple{n} la prohibición de producción paralela al no mantener separación clara en {elementos} durante el ciclo {ciclo}."
+      },
+      criterio:"El Artículo 11 del Reglamento (UE) 848/2018 establece que cuando un operador gestiona tanto unidades ecológicas como no ecológicas, debe garantizar la separación clara y verificable entre ambas producciones, con documentación suficiente que permita al organismo de control verificar dicha separación en todo momento.",
+      declaracion:"Lo anterior constituye una no conformidad con el Artículo 11 del Reglamento (UE) 848/2018, por no mantener la separación verificable requerida entre producción ecológica y no ecológica."
+    },
+    {
       id:"Art. 12", t:"Producción vegetal — normas generales de manejo",
       d:"Gestión del suelo con abonos orgánicos certificados, rotaciones policulturales documentadas, prácticas de prevención de erosión y prohibición de fertilizantes nitrogenados sintéticos.",
       chips:{
@@ -1616,6 +1670,114 @@ const DB = {
       },
       criterio:"El Artículo 38 del Reglamento (UE) 848/2018 establece que los operadores deben mantener registros completos de todas sus actividades de producción, transformación y comercialización ecológica, los cuales deben estar disponibles para el organismo de control y permitir la trazabilidad completa del producto.",
       declaracion:"Lo anterior constituye una no conformidad con el Artículo 38 del Reglamento (UE) 848/2018, por no contar con registros completos que garanticen la trazabilidad del producto ecológico."
+    },
+    {
+      id:"Art. 13", t:"Insumos en producción vegetal — uso de insumos autorizados",
+      d:"En producción vegetal ecológica solo se pueden utilizar insumos (fertilizantes, acondicionadores del suelo, fitosanitarios) incluidos en el Anexo I y II del Reglamento 848/2018. Los insumos deben estar autorizados por el organismo de control y el operador debe mantener registros de su uso.",
+      chips:{
+        grupo:["listado de insumos autorizados utilizado","registros de aplicación de insumos","fichas técnicas de productos aplicados","autorización del OC para insumos usados","ausencia de fertilizantes nitrogenados sintéticos","ausencia de plaguicidas de síntesis"],
+        finca:["registro de aplicación de insumos","facturas de compra de insumos","fichas de seguridad de productos","verificación de insumos en lista autorizada"],
+        beneficio:["insumos de limpieza autorizados","registros de desinfección"],
+        planta:["aditivos e ingredientes autorizados","registros de insumos de proceso"],
+        exportadora:["documentación de insumos en cadena de suministro"]
+      },
+      hallazgo:{
+        ausente:"Durante la inspección al {tipo} se verificó que {sujeto} no cuenta{n} con {elementos} que demuestren el uso exclusivo de insumos autorizados bajo el Reglamento 848/2018 para el ciclo {ciclo}.",
+        incompleto:"Durante la inspección al {tipo} se verificó que {sujeto} presenta{n} registros incompletos de insumos aplicados, con deficiencias en {elementos} para el ciclo {ciclo}.",
+        Incorrecto:"Durante la inspección al {tipo} se constató que {sujeto} utilizó{n} insumos no autorizados por el Reglamento 848/2018, específicamente {elementos}, durante el ciclo {ciclo}."
+      },
+      criterio:"El Artículo 13 del Reglamento (UE) 848/2018 establece que en la producción vegetal ecológica únicamente pueden utilizarse los insumos (fertilizantes, acondicionadores, fitosanitarios) listados en los Anexos I y II del Reglamento, debiendo el operador mantener registros completos de su uso y contar con la aprobación del organismo de control competente.",
+      declaracion:"Lo anterior constituye una no conformidad con el Artículo 13 del Reglamento (UE) 848/2018, por no acreditar el uso exclusivo de insumos autorizados para la producción vegetal ecológica."
+    },
+    {
+      id:"Art. 14", t:"Semillas y material de reproducción vegetativa",
+      d:"Se debe utilizar material de reproducción vegetal ecológico. Solo cuando no esté disponible en el mercado, el organismo de control puede autorizar el uso de material convencional no tratado con productos no autorizados. Está prohibido el uso de OGM y de material tratado con plaguicidas no incluidos en el Anexo II.",
+      chips:{
+        grupo:["solicitud de derogación para semilla convencional","evidencia de búsqueda de semilla ecológica","registros de semilla o material vegetativo utilizado","facturas de compra de material de reproducción","ausencia de tratamiento con plaguicidas no autorizados","prohibición de OGM verificada"],
+        finca:["origen de semillas documentado","autorización OC para semilla convencional","registro de variedad utilizada"],
+        beneficio:["origen del material procesado documentado"],
+        planta:["documentación de material de reproducción de proveedores"],
+        exportadora:["trazabilidad del material de reproducción en cadena"]
+      },
+      hallazgo:{
+        ausente:"Durante la inspección al {tipo} se verificó que {sujeto} no cuenta{n} con {elementos} que acrediten el uso de material de reproducción autorizado conforme al Art. 14 del Reglamento 848/2018 para el ciclo {ciclo}.",
+        incompleto:"Durante la inspección al {tipo} se verificó que {sujeto} presenta{n} documentación incompleta sobre el origen del material de reproducción, con deficiencias en {elementos} para el ciclo {ciclo}.",
+        Incorrecto:"Durante la inspección al {tipo} se constató que {sujeto} utilizó{n} material de reproducción no autorizado o tratado con productos prohibidos, específicamente {elementos}, durante el ciclo {ciclo}."
+      },
+      criterio:"El Artículo 14 del Reglamento (UE) 848/2018 establece la obligación de utilizar semillas y material de reproducción vegetativa de producción ecológica, permitiendo el uso de material convencional no tratado únicamente cuando exista una derogación expresa autorizada por el organismo de control, y prohibiendo en todo caso el uso de organismos modificados genéticamente.",
+      declaracion:"Lo anterior constituye una no conformidad con el Artículo 14 del Reglamento (UE) 848/2018, por no acreditar el uso de material de reproducción vegetal conforme a los requisitos ecológicos establecidos."
+    },
+    {
+      id:"Art. 17", t:"Sistema de control interno (SCI) para grupos de operadores",
+      d:"Los grupos de operadores deben contar con un Sistema de Control Interno (SCI) documentado que incluya: descripción del sistema, lista de miembros, mecanismos de inspección interna, registro de no conformidades, sanciones aplicadas, procedimientos de retiro de miembros y documentación de seguimiento. El responsable del SCI debe estar claramente identificado.",
+      chips:{
+        grupo:["descripción del SCI documentada","lista actualizada de miembros del grupo","procedimiento de inspección interna escrito","registros de inspecciones internas realizadas","registro de no conformidades internas","sanciones aplicadas a productores","procedimiento de retiro o sanción de miembros","responsable del SCI identificado","plan de capacitación del SCI","seguimiento a no conformidades detectadas por SCI"],
+        finca:["participación en el SCI del grupo","registro de inspección interna recibida"],
+        beneficio:[],
+        planta:[],
+        exportadora:[]
+      },
+      hallazgo:{
+        ausente:"Durante la inspección al {tipo} se verificó que {sujeto} no cuenta{n} con {elementos} del Sistema de Control Interno requerido bajo el Art. 17 del Reglamento 848/2018 para el ciclo {ciclo}.",
+        incompleto:"Durante la inspección al {tipo} se verificó que el SCI de {sujeto} no contempla {elementos}, lo que impide verificar el control efectivo de la operación grupal para el ciclo {ciclo}.",
+        Incorrecto:"Durante la inspección al {tipo} se constató que el SCI de {sujeto} presenta deficiencias operativas en {elementos} que comprometen la integridad del sistema ecológico para el ciclo {ciclo}."
+      },
+      criterio:"El Artículo 17 del Reglamento (UE) 848/2018 establece que los grupos de operadores deben implementar y documentar un Sistema de Control Interno (SCI) funcional que garantice la verificación interna del cumplimiento de las normas ecológicas por todos los miembros, con registros accesibles, seguimiento de no conformidades y aplicación efectiva de sanciones.",
+      declaracion:"Lo anterior constituye una no conformidad con el Artículo 17 del Reglamento (UE) 848/2018, por no contar con un Sistema de Control Interno completo y operativo conforme a los requisitos establecidos para grupos de operadores."
+    },
+    {
+      id:"Art. 23", t:"Plan de producción ecológica — documentación del operador",
+      d:"El operador debe contar con un plan de producción ecológica actualizado que describa la unidad, las prácticas de producción, los insumos utilizados, las medidas preventivas contra contaminación y los mecanismos de trazabilidad.",
+      chips:{
+        grupo:["plan de producción ecológica del grupo","descripción de prácticas de manejo por rubro","medidas preventivas de contaminación documentadas","mecanismos de trazabilidad descritos","insumos autorizados listados en el plan","plan actualizado para el ciclo en curso"],
+        finca:["plan de producción de la finca","prácticas de manejo documentadas","medidas para evitar contaminación"],
+        beneficio:["plan de procesamiento ecológico","medidas de prevención de contaminación en beneficio"],
+        planta:["plan de producción ecológica de la planta","medidas de segregación documentadas"],
+        exportadora:["plan de comercialización ecológica","documentación de trazabilidad"]
+      },
+      hallazgo:{
+        ausente:"Durante la inspección al {tipo} se verificó que {sujeto} no cuenta{n} con {elementos} del plan de producción ecológica requerido bajo el Art. 23 del Reglamento 848/2018 para el ciclo {ciclo}.",
+        incompleto:"Durante la inspección al {tipo} se verificó que el plan de producción ecológica de {sujeto} es incompleto, con deficiencias en {elementos} para el ciclo {ciclo}.",
+        Incorrecto:"Durante la inspección al {tipo} se constató que el plan de producción ecológica de {sujeto} no refleja la situación real de la operación en {elementos} para el ciclo {ciclo}."
+      },
+      criterio:"El Artículo 23 del Reglamento (UE) 848/2018 establece que los operadores deben contar con un plan de producción ecológica actualizado que describa de forma completa la unidad de producción, las prácticas aplicadas, los insumos utilizados, las medidas de prevención de contaminación y los sistemas de trazabilidad implementados.",
+      declaracion:"Lo anterior constituye una no conformidad con el Artículo 23 del Reglamento (UE) 848/2018, por no contar con un plan de producción ecológica completo y actualizado conforme a los requisitos establecidos."
+    },
+    {
+      id:"Art. 28", t:"Certificado ecológico — validez y contenido",
+      d:"El operador debe contar con un certificado ecológico vigente emitido por el organismo de control. El certificado debe indicar el nombre del operador, las categorías de productos certificados y el período de validez. El operador debe comunicar el certificado a sus clientes cuando sea requerido.",
+      chips:{
+        grupo:["certificado ecológico vigente","nombre del operador correcto en certificado","categorías de productos certificados actualizadas","período de validez no vencido","comunicación del certificado a compradores"],
+        finca:["certificado de la finca vigente","categorías de productos correctas"],
+        beneficio:["certificado del beneficio vigente","actividades certificadas correctas"],
+        planta:["certificado de la planta vigente","actividades de transformación certificadas"],
+        exportadora:["certificado de exportadora vigente","documentos de exportación con referencia al certificado"]
+      },
+      hallazgo:{
+        ausente:"Durante la inspección al {tipo} se verificó que {sujeto} no cuenta{n} con {elementos} que acrediten la certificación ecológica vigente conforme al Art. 28 del Reglamento 848/2018 para el ciclo {ciclo}.",
+        incompleto:"Durante la inspección al {tipo} se verificó que el certificado ecológico de {sujeto} presenta inconsistencias en {elementos} para el ciclo {ciclo}.",
+        Incorrecto:"Durante la inspección al {tipo} se constató que {sujeto} opera{n} con certificado ecológico vencido o con información incorrecta en {elementos} durante el ciclo {ciclo}."
+      },
+      criterio:"El Artículo 28 del Reglamento (UE) 848/2018 establece que todo operador certificado debe poseer un certificado ecológico válido y vigente emitido por su organismo de control, el cual debe reflejar con exactitud las categorías de productos certificados y estar disponible para presentación ante compradores y autoridades competentes.",
+      declaracion:"Lo anterior constituye una no conformidad con el Artículo 28 del Reglamento (UE) 848/2018, por no contar con certificado ecológico válido y vigente conforme a los requisitos establecidos."
+    },
+    {
+      id:"Art. 36", t:"Etiquetado y uso de indicaciones ecológicas",
+      d:"Las indicaciones ecológicas en el etiquetado solo pueden utilizarse cuando el producto cumple con todos los requisitos del Reglamento 848/2018. El logotipo de producción ecológica de la UE es obligatorio en productos envasados destinados al consumidor final dentro de la UE. El número de código del OC debe aparecer en el etiquetado.",
+      chips:{
+        grupo:["uso correcto del término 'ecológico' u 'orgánico'","logotipo UE de producción ecológica en etiqueta","número de código del organismo de control","indicación del lugar de producción de ingredientes ecológicos","ausencia de indicaciones ecológicas en productos no certificados"],
+        finca:["etiquetado de sacos o contenedores de cosecha","indicaciones en documentos de venta"],
+        beneficio:["etiquetado del producto procesado","información del OC en envases"],
+        planta:["etiquetado de productos transformados","logotipo UE y código OC"],
+        exportadora:["documentos de exportación con indicaciones ecológicas correctas","etiquetado de exportación conforme"]
+      },
+      hallazgo:{
+        ausente:"Durante la inspección al {tipo} se verificó que {sujeto} no cuenta{n} con {elementos} en el etiquetado requerido bajo el Art. 36 del Reglamento 848/2018 para el ciclo {ciclo}.",
+        incompleto:"Durante la inspección al {tipo} se verificó que el etiquetado utilizado por {sujeto} es incompleto, con deficiencias en {elementos} para el ciclo {ciclo}.",
+        Incorrecto:"Durante la inspección al {tipo} se constató que {sujeto} utiliza{n} indicaciones ecológicas de forma incorrecta en {elementos} durante el ciclo {ciclo}."
+      },
+      criterio:"El Artículo 36 del Reglamento (UE) 848/2018 establece las normas de etiquetado aplicables a los productos ecológicos, incluyendo el uso obligatorio del logotipo de la UE en productos envasados destinados al consumidor final, la indicación del código del organismo de control y el lugar de producción de los ingredientes ecológicos.",
+      declaracion:"Lo anterior constituye una no conformidad con el Artículo 36 del Reglamento (UE) 848/2018, por no cumplir con los requisitos de etiquetado establecidos para productos de producción ecológica."
     }
   ]
 };
@@ -1675,7 +1837,7 @@ function rdCargarChips(p) {
   const lista = p.chips[opTipo] || p.chips['grupo'] || [];
   const wrap = document.getElementById('chips-wrap');
   wrap.innerHTML = lista.map(c =>
-    `<div class="chip" onclick="rdToggleChip(this,'${c.replace(/'/g,"&#39;")}')">${c}</div>`
+    `<div class="chip-rd" onclick="rdToggleChip(this,'${c.replace(/'/g,"&#39;")}')">${c}</div>`
   ).join('');
 }
 
@@ -1764,21 +1926,13 @@ function rdGenerar() {
     .replace(/{elementos}/g, elementosStr)
     .replace(/{rubro}/g,    opRubro);
 
-  // Si el auditor escribió observación libre → úsala como base principal
-  let hallazgoFinal;
+  // La plantilla ISO es siempre la base del hallazgo
+  let hallazgoFinal = hallazgoBase;
+  // Si el auditor agregó observación libre → se añade como evidencia adicional al final
   if (obsLib) {
-    // Asegurar que empiece con mayúscula y termine en punto
     let obs = obsLib.charAt(0).toUpperCase() + obsLib.slice(1);
     if (!obs.endsWith('.')) obs += '.';
-    hallazgoFinal = obs;
-    // Agregar los elementos específicos seleccionados si los hay
-    if (elementos.length > 0) {
-      const verbo = rdTipo === 'Incorrecto' ? 'los aspectos no conformes identificados incluyen' : 'los aspectos faltantes o deficientes identificados incluyen';
-      hallazgoFinal += ` Específicamente, ${verbo}: ${elementosStr}.`;
-    }
-  } else {
-    // Sin observación libre → usar plantilla enriquecida
-    hallazgoFinal = hallazgoBase;
+    hallazgoFinal += ` ${obs}`;
   }
 
   // ── Criterio con nombre del operador ────────────

@@ -456,7 +456,7 @@ textarea.fc{resize:vertical;min-height:78px;line-height:1.5}
   <div class="sec"><div class="sec-num">1</div><div class="sec-title">Datos del operador</div></div>
   <div class="card"><div class="card-inner">
     <div class="frow" style="margin-bottom:10px">
-      <div class="fg" style="margin:0"><label class="flbl">Nombre del operador</label><input class="fc" id="op-nombre" placeholder="Ej: CORCASAN R.L"></div>
+      <div class="fg" style="margin:0"><label class="flbl">Nombre del operador</label><input class="fc" id="rd-op-nombre" placeholder="Ej: CORCASAN R.L"></div>
       <div class="fg" style="margin:0"><label class="flbl">Tipo de operación</label>
         <select class="fc" id="op-tipo" onchange="rdActualizarChips()">
           <option value="grupo">Grupo / Cooperativa de productores</option>
@@ -496,7 +496,7 @@ textarea.fc{resize:vertical;min-height:78px;line-height:1.5}
     </div>
     <div class="fg">
       <label class="flbl">Punto / artículo aplicable</label>
-      <select class="fc" id="nc-punto" onchange="rdOnPuntoChange()">
+      <select class="fc" id="rd-punto" onchange="rdOnPuntoChange()">
         <option value="">— seleccionar punto —</option>
       </select>
       <div class="punto-preview" id="punto-preview"></div>
@@ -1634,7 +1634,7 @@ let textoFinal = '';
 function rdInit() {
   rdCargarPuntos();
   const rdAudit = JSON.parse(localStorage.getItem('nca_audit') || '{}');
-  if (rdAudit.nombre) document.getElementById('op-nombre').value = rdAudit.nombre;
+  if (rdAudit.nombre) document.getElementById('rd-op-nombre').value = rdAudit.nombre;
   if (rdAudit.fecha) {
     const yr = rdAudit.fecha.substring(0,4);
     if(yr) document.getElementById('op-ciclo').value = `${parseInt(yr)-1}-${yr}`;
@@ -1642,7 +1642,7 @@ function rdInit() {
 }
 
 function rdCargarPuntos() {
-  const sel = document.getElementById('nc-punto');
+  const sel = document.getElementById('rd-punto');
   sel.innerHTML = '<option value="">— seleccionar punto —</option>' +
     DB[rdNorma].map(p => `<option value="${p.id}">${p.id} — ${p.t}</option>`).join('');
   document.getElementById('punto-preview').classList.remove('vis');
@@ -1656,7 +1656,7 @@ function rdSetNorma(n) {
 }
 
 function rdOnPuntoChange() {
-  const id = document.getElementById('nc-punto').value;
+  const id = document.getElementById('rd-punto').value;
   const p = DB[rdNorma].find(x => x.id === id);
   const prev = document.getElementById('punto-preview');
   if (p) {
@@ -1685,7 +1685,7 @@ function rdLimpiarChips() {
 }
 
 function rdActualizarChips() {
-  const id = document.getElementById('nc-punto').value;
+  const id = document.getElementById('rd-punto').value;
   if (id) rdOnPuntoChange();
 }
 
@@ -1705,11 +1705,11 @@ function rdSetTipo(t) {
 // GENERADOR DE REDACCIÓN
 // ══════════════════════════════════════════
 function rdGenerar() {
-  const opNombre = document.getElementById('op-nombre').value.trim();
+  const opNombre = document.getElementById('rd-op-nombre').value.trim();
   const opTipoVal = document.getElementById('op-tipo').value;
   const opRubro  = document.getElementById('op-rubro').value;
   const opCiclo  = document.getElementById('op-ciclo').value.trim() || '2025-2026';
-  const puntoId  = document.getElementById('nc-punto').value;
+  const puntoId  = document.getElementById('rd-punto').value;
   const obsLib   = document.getElementById('nc-obs').value.trim();
   const chipExtra = document.getElementById('chip-custom').value.trim();
 
@@ -1755,7 +1755,7 @@ function rdGenerar() {
   const sujeto = opNombre || (plural ? 'los productores de la organización' : 'el operador');
 
   // ── Construir hallazgo ────────────────────────────
-  let hallazgoBase = p.hallazgo[tipo] || p.hallazgo['incompleto'];
+  let hallazgoBase = p.hallazgo[rdTipo] || p.hallazgo['incompleto'];
   hallazgoBase = hallazgoBase
     .replace(/{tipo}/g,     tipoTexto)
     .replace(/{sujeto}/g,   sujeto)
@@ -1803,7 +1803,7 @@ function rdGenerar() {
   textoFinal = `${hallazgoFinal} ${declaracionFinal}`;
 
   // Mostrar resultado
-  const tipoLabel = {ausente:'Ausente / No existe', incompleto:'Incompleto / Parcial', Incorrecto:'Incorrecto / No conforme'}[tipo];
+  const tipoLabel = {ausente:'Ausente / No existe', incompleto:'Incompleto / Parcial', Incorrecto:'Incorrecto / No conforme'}[rdTipo];
   document.getElementById('r-art').textContent         = `${rdNorma} · ${puntoId}`;
   document.getElementById('r-tipo').textContent        = tipoLabel;
   document.getElementById('r-hallazgo').textContent    = hallazgoFinal;
@@ -1814,7 +1814,7 @@ function rdGenerar() {
   const listaEl = document.getElementById('r-elementos-lista');
   if (listaEl) {
     if (elementos.length > 0) {
-      listaEl.innerHTML = elementos.map(e => `<span class="elem-tag">• ${e}</span>`).join('');
+      listaEl.innerHTML = elementos.map(e => `<span class="elem-tag-rd">• ${e}</span>`).join('');
       document.getElementById('r-elementos-wrap').style.display = 'block';
     } else {
       document.getElementById('r-elementos-wrap').style.display = 'none';
@@ -1827,7 +1827,7 @@ function rdGenerar() {
 }
 
 function rdCopiar() {
-  const art = document.getElementById('nc-punto').value;
+  const art = document.getElementById('rd-punto').value;
   const txt = `${rdNorma} · ${art}\n\n${textoFinal}`;
   navigator.clipboard.writeText(txt)
     .then(() => toast('📋 Redacción copiada'))
@@ -1838,7 +1838,7 @@ function rdNueva() {
   document.getElementById('resultado').classList.remove('vis');
   document.getElementById('nc-obs').value = '';
   document.getElementById('chip-custom').value = '';
-  document.getElementById('nc-punto').value = '';
+  document.getElementById('rd-punto').value = '';
   document.getElementById('punto-preview').classList.remove('vis');
   rdLimpiarChips();
   window.scrollTo({ top: 0, behavior: 'smooth' });

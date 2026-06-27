@@ -4,8 +4,8 @@
   "description": "Gestión de auditoría orgánica NOP USDA y Reglamento 848/2018",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#0F2318",
-  "theme_color": "#0F2318",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
   "orientation": "portrait",
   "icons": []
 }
